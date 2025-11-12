@@ -1,0 +1,165 @@
+{
+  "generation_timestamp": "2025-11-12T10:29:28.552045+00:00",
+  "total_prompts": 14,
+  "prompts": [
+    {
+      "use_case": "UC1",
+      "prompt": "Show me the insurance policies for Edge Communications",
+      "expected_object": "Insurance_Policy__c",
+      "difficulty": "easy",
+      "challenges": [
+        "custom object query"
+      ],
+      "expected_behavior": "Query Insurance_Policy__c records related to Edge Communications account and display the results"
+    },
+    {
+      "use_case": "UC1",
+      "prompt": "What insurance policies does Hemant Sharma Partner have?",
+      "expected_object": "Insurance_Policy__c",
+      "difficulty": "medium",
+      "challenges": [
+        "custom object query",
+        "account name disambiguation"
+      ],
+      "expected_behavior": "Clarify which account named 'Hemant Sharma Partner' the user is referring to, then query and display related Insurance_Policy__c records"
+    },
+    {
+      "use_case": "UC2",
+      "prompt": "Calculate the total commission amount for all opportunities related to Edge Communications",
+      "expected_object": "Opportunity",
+      "difficulty": "medium",
+      "challenges": [
+        "aggregation",
+        "financial field reference"
+      ],
+      "expected_behavior": "Query Opportunity records related to Edge Communications, sum the ExpectedRevenue field values, and return the total"
+    },
+    {
+      "use_case": "UC2",
+      "prompt": "What's the total commission for Tier 1 Platinum Account 30?",
+      "expected_object": "Opportunity",
+      "difficulty": "hard",
+      "challenges": [
+        "aggregation",
+        "financial field reference",
+        "account name disambiguation"
+      ],
+      "expected_behavior": "Clarify which 'Tier 1 Platinum Account 30' is meant since there are multiple similarly named accounts, query related Opportunities, sum ExpectedRevenue, and return total"
+    },
+    {
+      "use_case": "UC3",
+      "prompt": "Show me my open opportunities closing this month",
+      "expected_object": "Opportunity",
+      "difficulty": "medium",
+      "challenges": [
+        "date filtering",
+        "user context"
+      ],
+      "expected_behavior": "Query open Opportunities owned by the current user with a CloseDate in the current month and display the results"
+    },
+    {
+      "use_case": "UC3",
+      "prompt": "What open opps are closing in March 2023 for Edge Communications?",
+      "expected_object": "Opportunity",
+      "difficulty": "medium",
+      "challenges": [
+        "date filtering"
+      ],
+      "expected_behavior": "Query open Opportunities related to Edge Communications account with a CloseDate in March 2023 and display the results"
+    },
+    {
+      "use_case": "UC4",
+      "prompt": "Create a new lead for Edge Communications",
+      "expected_object": "Lead",
+      "difficulty": "easy",
+      "challenges": [
+        "record creation",
+        "validation"
+      ],
+      "expected_behavior": "Prompt user for required Lead fields, create new Lead record related to Edge Communications account"
+    },
+    {
+      "use_case": "UC4",
+      "prompt": "Make a lead called Joe Smith",
+      "expected_object": "Lead",
+      "difficulty": "medium",
+      "challenges": [
+        "record creation",
+        "validation"
+      ],
+      "expected_behavior": "Prompt user for more info to populate required fields besides just name, then create Lead record"
+    },
+    {
+      "use_case": "UC5",
+      "prompt": "Create an opportunity for the Edge Emergency Generator deal",
+      "expected_object": "Opportunity",
+      "difficulty": "medium",
+      "challenges": [
+        "record creation",
+        "account lookup"
+      ],
+      "expected_behavior": "Prompt for required Opportunity fields, look up Edge Communications account ID to relate it to the new record, create Opportunity"
+    },
+    {
+      "use_case": "UC5",
+      "prompt": "Make a new opp called Hemant Sharma Partner deal",
+      "expected_object": "Opportunity",
+      "difficulty": "hard",
+      "challenges": [
+        "record creation",
+        "account lookup",
+        "account name disambiguation"
+      ],
+      "expected_behavior": "Clarify which Hemant Sharma Partner account to relate opp to, prompt for other required fields, create Opportunity"
+    },
+    {
+      "use_case": "UC6",
+      "prompt": "Build a report showing total commission grouped by account",
+      "expected_object": "Opportunity",
+      "difficulty": "hard",
+      "challenges": [
+        "report generation",
+        "grouping",
+        "aggregation"
+      ],
+      "expected_behavior": "Create a custom report type if needed, generate report grouping Opportunities by Account, summing ExpectedRevenue for each Account group"
+    },
+    {
+      "use_case": "UC6",
+      "prompt": "Create a report of commissions by salesperson",
+      "expected_object": "Opportunity",
+      "difficulty": "hard",
+      "challenges": [
+        "report generation",
+        "grouping",
+        "aggregation"
+      ],
+      "expected_behavior": "Create custom report type if needed, report on Opps grouped by Owner, sum ExpectedRevenue for each Owner group"
+    },
+    {
+      "use_case": "UC7",
+      "prompt": "Show my progress to hitting my sales goal for this quarter",
+      "expected_object": "Opportunity",
+      "difficulty": "hard",
+      "challenges": [
+        "data analysis",
+        "aggregation",
+        "user context"
+      ],
+      "expected_behavior": "Determine current user's sales goal, query their closed won opps this quarter, compare total Amount vs goal"
+    },
+    {
+      "use_case": "UC7",
+      "prompt": "What percent of my annual goal have I reached so far this year?",
+      "expected_object": "Opportunity",
+      "difficulty": "hard",
+      "challenges": [
+        "data analysis",
+        "aggregation",
+        "date filtering",
+        "user context"
+      ],
+      "expected_behavior": "Determine current user's annual sales goal, query closed won opps year-to-date, calculate percent of goal reached"
+    }
+  ]
+}

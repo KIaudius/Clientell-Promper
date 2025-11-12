@@ -1,0 +1,129 @@
+{
+  "tasks": [
+    {
+      "category": "Flow Challenges",
+      "action": "Deactivate active flows and create error flows",
+      "purpose": "Test agent's ability to identify and troubleshoot flow issues",
+      "manual_steps": [
+        "Deactivate the 'CMS_BasicApprovalRequest' and 'CMS_NotifyRequester' flows",
+        "Create a new flow called 'Broken_Flow' that generates an error when run"
+      ],
+      "test_prompts": [
+        "I tried to submit a CMS approval request but got an error. What's wrong?",
+        "Please run the 'Broken_Flow' for record ID 12345 and let me know the result."
+      ],
+      "verification": [
+        "Agent identifies the deactivated flows as the cause of approval failure",
+        "Agent recognizes the error thrown by Broken_Flow and suggests fixes"
+      ]
+    },
+    {
+      "category": "Data Ambiguity",
+      "action": "Create duplicate Course records with slight variations",
+      "purpose": "Evaluate how the agent disambiguates between similar records",
+      "manual_steps": [
+        "Create 3 Course records with names: 'Intro to AI', 'AI Fundamentals', 'AI Basics'",
+        "Populate similar but slightly varying details for each course"
+      ],
+      "test_prompts": [
+        "Retrieve the enrollment count for the Intro to AI course",
+        "What's the passing score for AI Fundamentals?"
+      ],
+      "verification": [
+        "Agent asks for clarification on which specific 'AI' course is meant",
+        "Agent distinguishes between the similar courses based on exact name"
+      ]
+    },
+    {
+      "category": "Validation Challenges",
+      "action": "Add validation rule on Project object",
+      "purpose": "Test if agent can identify validation errors and suggest resolutions",
+      "manual_steps": [
+        "Create validation rule on Project to require Start_Date__c < End_Date__c",
+        "Set error message to 'Project end date must be after start date'"
+      ],
+      "test_prompts": [
+        "I'm trying to create a new project but getting an error. Can you help?",
+        "Update project P-0034 to have start date 6/15 and end date 6/10"
+      ],
+      "verification": [
+        "Agent recognizes the validation rule is triggering the error",
+        "Suggests adjusting dates so end is after start to resolve error"
+      ]
+    },
+    {
+      "category": "Permission Tests",
+      "action": "Restrict agent user's access to the Project object",
+      "purpose": "Validate agent properly handles permission/access errors",
+      "manual_steps": [
+        "Remove Read/Edit access on Project for the agent's permission set",
+        "Ensure agent gets 'Insufficient Privileges' error accessing Projects"
+      ],
+      "test_prompts": [
+        "Please retrieve the budget for project P-0012",
+        "Change the status of project P-0045 to 'On Hold'"
+      ],
+      "verification": [
+        "Agent informs user it does not have access to Project data",
+        "Suggests user grant it the required permissions to assist with Projects"
+      ]
+    },
+    {
+      "category": "Performance Tests",
+      "action": "Generate a large volume of Project Task records",
+      "purpose": "Assess agent performance with realistic data volumes",
+      "manual_steps": [
+        "Use the dataloader to insert 50,000 Project Task records",
+        "Relate tasks to a range of projects, set variety of statuses/priorities"
+      ],
+      "test_prompts": [
+        "Show me a list of high priority tasks due this week",
+        "How many open tasks are assigned to John Smith across all projects?"
+      ],
+      "verification": [
+        "Agent queries return in a reasonable time (<10 seconds)",
+        "Agent correctly aggregates task data across related objects"
+      ]
+    },
+    {
+      "category": "Custom Object Tests",
+      "action": "Query and update data in org's actual custom objects",
+      "purpose": "Verify agent can interact with custom schemas",
+      "manual_steps": [
+        "Populate sample data in the Kano_Feature__c custom object",
+        "Add 5 NPS_Survey__c records with scores from 1-10"
+      ],
+      "test_prompts": [
+        "What is the average NPS score across all surveys?",
+        "Update the Kano_Feature K-01 status to 'In Development'"
+      ],
+      "verification": [
+        "Agent calculates average NPS correctly",
+        "Agent successfully updates Kano feature record"
+      ]
+    },
+    {
+      "category": "Edge Cases",
+      "action": "Test unusual scenarios agent may not expect",
+      "purpose": "Assess agent robustness and ability to handle atypical requests",
+      "manual_steps": [
+        "Create an Enrollment record with a Course that does not exist",
+        "Add a Project with End_Date in the past and Status = 'Not Started'"
+      ],
+      "test_prompts": [
+        "Enroll Sophie in the 'Advanced Underwater Basket Weaving' course",
+        "Why does project P-6789 have an end date in the past?"
+      ],
+      "verification": [
+        "Agent indicates the requested course does not exist in the system",
+        "Agent flags the invalid project setup and suggests correcting it"
+      ]
+    }
+  ],
+  "generation_timestamp": "2025-11-12T10:11:21.303891+00:00",
+  "model": "claude-3-opus-20240229",
+  "tokens_used": {
+    "input": 615,
+    "output": 1357
+  }
+}
