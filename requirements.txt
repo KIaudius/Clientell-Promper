@@ -1,0 +1,17 @@
+# FastAPI and ASGI server
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+pydantic==2.5.3
+
+# Salesforce integration
+simple-salesforce==1.12.5
+
+# Anthropic Claude AI
+anthropic==0.18.1
+
+# Environment variables
+python-dotenv==1.0.1
+
+# CORS middleware (included in FastAPI)
+# Additional utilities
+python-multipart==0.0.6
